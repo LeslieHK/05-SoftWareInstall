@@ -1,0 +1,13 @@
+方法/步骤
+
+1、 控制面板——》所有控制面板项——》程序和功能，卸载mysql server!
+
+2、 然后删除mysql文件夹下的my.ini文件及所有文件
+
+3、 运行“regedit”文件，如图，打开注册表
+
+4、 删除HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\Eventlog\Application\MySQL文件夹
+
+    删除HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\Eventlog\Application\MySQL文件夹。HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Eventlog\Application\MySQL的文件夹。如图低端的地址。如果没有可以不用删除了。
+
+5、 删除C盘下的“C:\ProgramData\MySQL ”所以文件，如果删除不了则用360粉碎掉即可，该programData文件是隐藏的默认，设置显示后即可见，或者直接复制上边的地址到地址栏回车即可进入！删除后重启电脑，重装MYsql数据库应该就成功了。

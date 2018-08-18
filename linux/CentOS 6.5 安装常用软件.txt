@@ -1,0 +1,82 @@
+1、SecureCRT上传下载
+yum install lrzsz
+
+
+2、CentOS下yum安装五笔输入法
+安装五笔需要安装一个 ibus-table-wubi 包
+
+yum install ibus libusb ibus-libs ibus-table-wubi
+
+安装好后注销一下系统，让ibus读取新的配置，然后就可以在ibus的设置界面添加wubi了
+
+右击桌面右上角的输入法图标，选择 Preferences，切换到 Input Method 选项卡，在 Select a input method 下拉菜单里添加五笔输入法即可。
+
+
+3、配置JDK
+修改/etc/profile文件（设置一次，对所有用户有效）：vim /etc/profile
+
+在文件尾部加入环境变量的定义：
+
+JAVA_HOME=/usr/java/jdk1.8.0_25/
+
+PATH=$JAVA_HOME/bin:$PATH
+
+export JAVA_HOME
+
+export PATH
+
+保存退出，查看java版本：java -version
+
+
+4、Linux下创建桌面快捷方式
+方法1
+
+   1）新建文件eclipse.desktop，命令如下：
+      sudo vim  /usr/share/applications/eclipse.desktop   
+
+   2）在新建文件中添加如下内容并保存：
+      <span style="color:#333333">  
+	Encoding=UTF-8   
+	Name=eclipse    
+	Comment=Eclipse IDE    
+	Exec=</span><span style="color:#ff0000">/eclipse</span><span style="color:#333333">/eclipse/eclipse   
+	Icon=</span><span style="color:#ff0000">/eclipse</span><span style="color:#333333">/eclipse/icon.xpm    
+	Terminal=false    
+	StartupNotify=true    
+	Type=Application    
+	Categories=Application;Development;</span>  
+
+      对上面的命令中的几条稍作解释：
+
+	Exec代表应用程序的位置【视实际情况修改】
+
+	Icon代表应用程序图标的位置【视实际情况修改】
+
+	Terminal的值为false表示启动时不启动命令行窗口，值为true表示启动命令行窗口【建议为false】
+
+	Categories这里的内容决定创建出的起动器在应用程序菜单中的位置，按照上面的写法创建的起动器将出现在应用程序－Internet中，以此类推，如果想在应用程序－办公中创建起动器，上述最后一行应该写成：Categories=Application;Office;
+
+   3）此时会在/usr/share/applications中看到eclipse的快捷方式：
+
+   4）将此图标可以拷贝到桌面，鼠标右击复制粘贴就行。
+
+方法2
+
+   为eclipse创建桌面快捷方式：
+
+   在linux桌面空白处,点击鼠标右键,弹出一个对话框,选择“create Launcher”(中文是“新建启动器”),
+   
+   在“Create Launcher”(中文“创建快捷方式”)对话框中选择Application(中文“应用程序”)，
+   
+   输入名字：eclipse ，在Command(中文“命令”)找到eclipse的启动程序(比如我的是：/eclipse/eclipse/eclipse),
+   
+   双击左上侧的图标会弹出一个选择图标的对话框，找到安装eclipse的目录,在目录中找到icon.xpm，选择Open(确定)。
+
+
+5、终端Terminal快捷方式
+   在linux桌面空白处,点击鼠标右键,弹出一个对话框,选择“create Launcher”(中文是“新建启动器”),
+   
+   在“Create Launcher”(中文“创建快捷方式”)对话框中选择Application(中文“应用程序”)，
+   
+   输入名字：Terminal，在Command(中文“命令”)找到：/usr/bin/gnome-terminal,选择Open(确定)
+   

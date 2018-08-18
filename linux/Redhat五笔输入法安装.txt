@@ -1,0 +1,43 @@
+Redhat9五笔输入法安装
+
+下载miniChinput-0.1.9-2.i386.rpm（网址：http://minichinput.sourceforge.net）
+
+Redhat自带有Chinput，在/usr/lib中有Chinput文件夹，打开其中的Chinput.ad可以看到[wb]这一字段都被注释了，所以没有五笔。
+
+把上面下载的rpm包复制到根目录下：$ cp miniChinput-0.1.9-2.i386.rpm/
+
+然后：$ cd /
+
+$ cat miniChinput-0.1.9-2.i386.rpm | rpm2cpio | pax -r
+
+然后在/usr/lib/Chinput/im/cce中会多出两个文件：nqwb.tab,nqwb.tab.phr,
+
+在上层目录/usr/lib/Chinput/im中，$ mv cce_hzinput.so nqwb.so
+
+再到上层目录：$ cd ..
+
+打开其中的Chinput.ad：$ vi Chinput.ad
+
+找到类似下面这一段，改成如下形式
+
+[WB]
+IMENAME = 五笔字型
+IMENAME =
+ENCODING = GB
+FILE = cce/nqwb.tab
+MODULE = nqwb.so
+FAVORITE = YES
+
+可以看到这一段上下都有一此类似字段，对应相应的输入法，如智能拼音，内码，仓颉等。如果不需要就可
+
+以用！（感叹号）把相应段注释掉。
+
+这里注意一下：可能在终端中无法显示中文字体，也就是实际你输入了，但没有显示出来，这时你可以在菜单栏中编辑->当前配置文件->常规中的字体中更改一个中文字体，好像只有两个以GB结尾的：
+
+AR PL KaitiM GB
+
+AR PL SungtiL GB
+
+这时就能看到了。
+
+完成以上工作，注销重新登录以后就可以用五笔了，和windows一样，ctrl+space调出输入法，ctrl+shitf切换。

@@ -1,0 +1,24 @@
+1. scim-make-table wnwb.bin -o wnwb.txt
+	把wnwb.bin转换成wnwb.txt文件
+	考虑到图标的问题要修改一下wnwb.txt文件
+	把ICON = /usr/share/scim/icons/Wubi2.png修改成ICON = /usr/share/ibus-table/icons/wnwb.svg
+2. ibus-table-createdb -s wnwb.txt
+	把得到wnwb.txt转换成ibus使用的db文件
+3.sudo cp wnwb.db /usr/share/ibus-table/tables
+	把转换好的wnwb.db文件copy到/usr/share/ibus-table/tables目录
+4.重启ibus添加万能五笔输入法。
+
+
+如果只是需要使用万能五笔For iBus的话可以按如下步骤：
+	
+	step1. 下载附件wnwb.tar.gz
+	step2. 解压
+	step3. ibus-table-createdb -s wnwb.txt
+	sudo cp wnwb.db /usr/share/ibus-table/tables
+	step4. sudo cp wnwb.svg /usr/share/ibus-table/icons
+	step5. 重启ibus，添加万能五笔输入法
+	
+	ps: 其中wnwb.svg为图标文件，名称是固定的有能力的人可自己做一个漂亮的图标代替
+
+
+附件下载地址：http://download.csdn.net/detail/zhou_1991/4548120

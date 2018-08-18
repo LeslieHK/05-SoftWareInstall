@@ -1,0 +1,43 @@
+第一步、请在http://kevinhg.download.csdn.net/下载firefox-2.0.0.20.tar.gz；
+
+第二步、将firefox-2.0.0.20.tar.gz解压缩至/opt/firefox目录下
+
+  1、首先切换到"firefox-2.0.0.20.tar.gz"所在的目录
+  2、将firefox-1.5.0.6.tar.gz解压到/opt，命令：tar -zxvf firefox-1.5.0.6.tar.gz -C /opt
+
+第三步、终端下执行以下命令：
+
+  1、#cd /opt/firefox
+  2、#./firefox
+
+  即可出现浏览器界面，为了在桌面建立快捷方式请继续
+
+第四步、桌面右键单击，打开“新建启动器”，填写相关项目
+  
+  确定后桌面会出现快捷方式图标。如果想点击“开始菜单”->互联网->更多互联网应用程序->Firefox来启动，请继续
+
+第五步：
+
+  1、首先将图标放入到相应路径下：
+
+  cp -f /opt/firefox/icons/mozicon128.png /usr/share/pixmaps/firefox.png
+  
+  2、编辑快捷方式
+
+  gedit /usr/share/applications/firefox-2.0.0.20.desktop
+  
+  3、粘贴以下内容到gedit窗口，并保存
+[Desktop Entry]
+Encoding=UTF-8
+Name=Firefox Web Browser 2.0.0.20
+GenericName[zh_CN]=火狐浏览器
+Comment=Firefox web browser
+Exec=/opt/firefox/firefox %u
+Icon=firefox.png
+Terminal=false
+Type=Application
+StartupWMClass=Firefox-bin
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;
+Categories=Network;Application;
+
+  4、点击“开始菜单”->互联网->更多互联网应用程序->Firefox来启动Firefox

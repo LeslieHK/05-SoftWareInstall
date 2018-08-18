@@ -1,0 +1,36 @@
+所有操作均在root权限下进行。
+
+
+1、到Windows XP或者Vista下复制字体（C:\Windows\Fonts）到CentOS
+
+雅黑：msyh
+
+黑体：SimHei
+
+宋体：SimSun
+
+华文细黑：STXihei
+
+华文楷体：STKaiti
+
+等等 你要的字体
+
+
+2、将要的字体复制到/usr/share/fonts/chinese/TrueType目录下
+
+
+3、修改字体权限，使root以外的用户可以使用这些字体。
+
+chmod 755 /usr/share/fonts/chinses/TrueType/*
+
+
+4、建立字体缓存，命令：cd /usr/share/fonts/chinses/TrueType
+
+mkfontscale
+
+mkfontdir
+
+fc-cache -fv
+
+
+5、重启，即可使用。

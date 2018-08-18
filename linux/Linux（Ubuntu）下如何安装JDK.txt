@@ -1,0 +1,55 @@
+Linux（Ubuntu）下如何安装JDK
+
+
+一、下载
+
+  首先，当然是要下载了。
+
+  地址：http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
+
+  按照需要选择不同的版本。笔者选择的是 jdk-7u45，如图：
+
+二、 解压
+
+  将下载下来的 .tar.gz 文件解压。
+
+  使用如下命令解压：
+
+    sudo tar zxvf ./jdk-7u45-linux-x64.tar.gz
+
+  为了方便管理，可将解压后的文件移至另一个文件夹。不做也行。
+
+  笔者将文件移至了 /opt/Java/jdk/ 目录下。
+
+  为了方便下一步设置环境变量，将文件夹换了个短点的名字 —— jdk1.7
+
+  可使用如下命令对文件夹重命名
+
+    sudo mv jdk1.7.0_45/ jdk1.7/
+
+ 
+三、 设置环境变量
+
+  编辑 profile 文件。
+
+  在终端输入如下命令：
+
+    vi /etc/profile
+
+  在该文件的末尾，加上以上几行代码：
+
+    export JAVA_HOME=/opt/Java/jdk/jdk1.7
+    export CLASSPATH=${JAVA_HOME}/lib
+    export PATH=${JAVA_HOME}/bin:$PATH
+
+ 
+
+  为了让更改立即生效，请在终端执行如下命令：
+
+    source /etc/profile
+ 
+四、 验证
+
+  通过以上步骤，JDK已安装完成。
+
+  输入以下命令验证 java -version ，如图：

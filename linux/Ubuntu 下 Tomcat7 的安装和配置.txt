@@ -1,0 +1,46 @@
+Ubuntu 下 Tomcat7 的安装和配置
+
+
+安装：（下载 http://tomcat.apache.org/download-70.cgi）
+
+1.首先，将apache-tomcat-7.0.5.tar.gz移动到 /opt 目录下，并将其解压:
+	
+  sudo cd apache-tomcat-7.0.5.tar.gz /opt
+
+  sudo tar zxvf apache-tomcat-7.0.5.tar.gz
+
+
+2.然后，cd到/opt目录下，我们可以将文件夹改名（以后进入方便）：
+	
+  sudo mv apache-tomcat-7.0.5 tomcat7
+
+
+3.cd到/opt/tomcat7/bin 下，编辑catalina.sh文件，向中插入以下代码（插到’#'注释结束，正文开始的地方）：
+	
+  JAVA_HOME=/opt/jdk1.6.0_22           //<--此处依你的jdk安装目录而定
+
+  JAVA_OPTS="-server -Xms512m -Xmx1024m -XX:PermSize=600M -XX:MaxPermSize=600m -Dcom.sun.management.jmxremote"
+
+
+4.保存，关闭。这样，Tomcat7就基本完成安装了。端口默认是8080 。可以到conf目录下的server.xml把8080改成其他的端口就行了。
+
+  cd到/opt/tomcat7/bin下，运行：
+	
+  sudo ./startup.sh
+
+  
+如果出现：
+	
+  Using CATALINA_BASE:   /opt/Tomcat7
+
+  Using CATALINA_HOME:   /opt/Tomcat7
+
+  Using CATALINA_TMPDIR: /opt/Tomcat7/temp
+
+  Using JRE_HOME:        /opt/jdk1.6.0_22
+
+  Using CLASSPATH:       /opt/Tomcat7/bin/bootstrap.jar:/opt/Tomcat7/bin/tomcat-juli.jar
+
+5.应该已经开启成功了，可以访问本地网页测试：
+
+  http://127.0.0.1:8080/

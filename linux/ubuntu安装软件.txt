@@ -1,0 +1,4 @@
+1、重装Firefox:
+	apt-get remove firefo（卸载）
+	apt-get install firefox（安装）
+	apt-get install firefox-locale-zh-hans（安装firefox中文包）
